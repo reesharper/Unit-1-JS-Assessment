@@ -14,10 +14,15 @@
  *
  * Sample data expected output: `Luke Skywalker`
 */
+
+
 function getName(character) {
   // ⭐️ Example Solution Provided For First Function ⭐️
   return character.name
 }
+
+
+
 
 /**
  * ### Challenge `getFilmCount`
@@ -28,10 +33,17 @@ function getName(character) {
  *
  * Sample data expected output: 5
  */
+
+
 function getFilmCount(character) {
-  // TODO: Add your code inside the functions (others below).
+
+  return character.films.length
 
 }
+
+
+
+
 
 /**
  * ### Challenge `getSecondStarshipName`
@@ -41,9 +53,23 @@ function getFilmCount(character) {
  * Return second starship's name from `starships` property.
  * If length is 0. Return 'none'
 */
+
+
 function getSecondStarshipName(character) {
-  // TODO: Add your code here.
+
+  if (character.starships > [0]) {
+  return character.starships[1].name
+  } else {
+    return "none"
+  }
+
 }
+
+
+
+
+
+
 
 /**
  * ### Challenge `getSummary`
@@ -54,9 +80,19 @@ function getSecondStarshipName(character) {
  *    Template: `{name}, {height}cm, {mass}kg. Featured in {film count} films.`
  *    Result: `Luke Skywalker, 172cm, 77kg. Featured in 5 films.`
  */
+
+
 function getSummary(character) {
-  // TODO: Add your code here.
+
+return `${character.name}, ${character.height}cm, ${character.mass}kg. Featured in ${getFilmCount(character)} films.`
+
 }
+
+
+
+
+
+
 
 /**
  * ### Challenge `getVehiclesCostInCreditsSumTotal`
@@ -66,9 +102,29 @@ function getSummary(character) {
  * Sum the total cost in credits for all vehicles defined on the input character.
  * Sample data expected output: 8000
 */
+
+
 function getVehiclesCostInCreditsSumTotal(character) {
-  // TODO: Add your code here.
+
+  let vehicleCost = character.vehicles.reduce (function (accumulator, vehicle) {
+
+    const cost = vehicle["cost_in_credits"]
+
+    if (cost !== null) {
+      return accumulator + cost
+    } else {
+      return accumulator
+    }
+
+  }, 0);
+
+  return vehicleCost
+
 }
+
+
+
+
 
 /**
  * ### Challenge `getStarshipPassengerAndCrewSumTotal`
@@ -80,9 +136,33 @@ function getVehiclesCostInCreditsSumTotal(character) {
  *
  * Sample data expected output: 27
 */
+
+
 function getStarshipPassengerAndCrewSumTotal(character) {
-  // TODO: Add your code here.
+
+  let passengerAndCrew = character.starships.reduce(function (accumulator, ship) {
+
+    const crew = ship["crew"]
+    const passengers = ship["passengers"]
+    if (crew !== null) {
+      if (passengers !== null) {
+        return accumulator + crew + passengers;
+      }
+      return accumulator + crew;
+    }
+    if (passengers !== null) {
+      return accumulator + passengers;
+    }
+    return accumulator;
+  }, 0);
+
+  return passengerAndCrew;
+
 }
+
+
+
+
 
 /**
  * ### Challenge `getNthFilm`
@@ -97,9 +177,22 @@ function getStarshipPassengerAndCrewSumTotal(character) {
  * Given film #1, expected output: `A New Hope`
  * Given film #7, expected error: `There are only 3 Star Wars movies. Flan fiction excluded.`
 */
+
+
 function getNthFilm(character, filmNumber) {
-  // TODO: Add your code here.
+
+  if (filmNumber < 1 || filmNumber > 3) {
+    return "There are only 3 Star Wars movies. Super Fast excluded."
+  } else {
+    return character.films[filmNumber - 1]
+  }
+
 }
+
+
+
+
+
 
 /**
  * ### Challenge `getCargoCapacityTotal`
